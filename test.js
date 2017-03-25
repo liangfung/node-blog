@@ -5,3 +5,4 @@ module.exports = {
 //exports.a = 'haha'
 //exports.b = 'done'
 //vim test111111111111111
+//vim test111 解决
