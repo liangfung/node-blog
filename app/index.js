@@ -4,6 +4,7 @@
 
 //使用fs进行IO操作
 const fs = require('fs');
+const path = require('path')
 
 class App {
     constructor() {
@@ -11,12 +12,25 @@ class App {
     }
     initServer() {
         return (request, response) => {
-            console.log('收到请求了')
-            // fs读取index.html并返回
-            // fs的路径相对于process.cwd()
-            fs.readFile('./public/index.html', 'utf-8', (error, data) => {
-                response.end(data)
-            })
+
+            const { url } = request;
+
+            if (url == '/css/index.css') {
+                fs.readFile('./public/css/index.css', (error, data) => {
+                    response.end(data)
+                })
+            }
+            if (url == '/js/index.js') {
+                fs.readFile('./public/js/index.js', (error, data) => {
+                    response.end(data)
+                })
+            }
+            if (url == '/') {
+                fs.readFile('./public/index.html', (error, data) => {
+                    response.end(data)
+                })
+            }
+
         }
 
     }
