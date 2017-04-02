@@ -4,7 +4,8 @@
 
 //使用fs进行IO操作
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const staticServer = require('./static-server');
 
 class App {
     constructor() {
@@ -13,23 +14,27 @@ class App {
     initServer() {
         return (request, response) => {
 
-            const { url } = request;
+            const { url } = request; //解构赋值 let url = request.url
 
-            if (url == '/css/index.css') {
-                fs.readFile('./public/css/index.css', (error, data) => {
-                    response.end(data)
-                })
-            }
-            if (url == '/js/index.js') {
-                fs.readFile('./public/js/index.js', (error, data) => {
-                    response.end(data)
-                })
-            }
-            if (url == '/') {
-                fs.readFile('./public/index.html', (error, data) => {
-                    response.end(data)
-                })
-            }
+            let body = staticServer(url)
+
+            response.end(body);
+
+            // if (url == '/css/index.css') {
+            //     fs.readFile('./public/css/index.css', (error, data) => {
+            //         response.end(data)
+            //     })
+            // }
+            // if (url == '/js/index.js') {
+            //     fs.readFile('./public/js/index.js', (error, data) => {
+            //         response.end(data)
+            //     })
+            // }
+            // if (url == '/') {
+            //     fs.readFile('./public/index.html', (error, data) => {
+            //         response.end(data)
+            //     })
+            // }
 
         }
 

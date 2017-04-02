@@ -4,7 +4,7 @@
   "description": "a node blog",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
