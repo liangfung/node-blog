@@ -13,12 +13,14 @@ class App {
     }
     initServer() {
         return (request, response) => {
-
             const { url } = request; //解构赋值 let url = request.url
-
-            let body = staticServer(url)
-
-            response.end(body);
+            staticServer(url)
+                .then((data) => {
+                    response.end(data);
+                })
+                .catch((err) => {
+                    response.end(err)
+                })
 
             // if (url == '/css/index.css') {
             //     fs.readFile('./public/css/index.css', (error, data) => {

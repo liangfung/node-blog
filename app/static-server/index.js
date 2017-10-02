@@ -16,14 +16,17 @@ let staticFunc = (url) => {
 
     url = map[url] || url;
     let _path = getPath(url)
-    let body = ''
-    try {
-        body = fs.readFileSync(_path)
-    } catch (err) {
-        body = err.stack
-    }
+    return new Promise((resolve, reject) => {
+        fs.readFile(_path, (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    })
 
-    return body;
+    // return body;
 }
 
 module.exports = staticFunc
