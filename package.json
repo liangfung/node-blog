@@ -1,30 +1,30 @@
 {
-    "name": "node-blog",
-    "version": "1.0.0",
-    "description": "a node blog",
-    "main": "index.js",
-    "scripts": {
-        "start": "nodemon index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/liangfung/node-blog.git"
-    },
-    "keywords": [
-        "node-blog"
-    ],
-    "author": "liangFung",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/liangfung/node-blog/issues"
-    },
-    "homepage": "https://github.com/liangfung/node-blog#readme",
-    "devDependencies": {
-        "inspector": "^0.5.0",
-        "lodash": "^4.17.4",
-        "nodemon": "^1.11.0"
-    },
-    "dependencies": {
-        "axios": "^0.15.3"
-    }
+  "name": "node-blog",
+  "version": "1.0.0",
+  "description": "a node blog",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangfung/node-blog.git"
+  },
+  "keywords": [
+    "node-blog"
+  ],
+  "author": "liangFung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liangfung/node-blog/issues"
+  },
+  "homepage": "https://github.com/liangfung/node-blog#readme",
+  "devDependencies": {
+    "inspector": "^0.5.0",
+    "lodash": "^4.17.4",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.15.3"
+  }
 }

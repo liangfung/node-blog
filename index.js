@@ -5,5 +5,5 @@ const App = require('./app');
 const server = new App();
 
 http.createServer(server.initServer()).listen(PORT, () => {
-    console.log('done')
+  console.log('done')
 })
