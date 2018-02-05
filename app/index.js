@@ -6,6 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const staticServer = require('./static-server');
+const apiServer = require('./api')
 
 class App {
 	constructor() {
@@ -13,31 +14,25 @@ class App {
 	}
 	initServer() {
 		return (request, response) => {
-			const { url } = request; //解构赋值 let url = request.url
-			staticServer(url)
+			let { url } = request; //解构赋值 let url = request.url
+			if (url.match('action')) {
+				let body = apiServer(url)
+				response.writeHead(200, 'resolve OK', 
+				{
+					'X-powered-by': 'Node.js',
+					'Content-Type': 'application/json'
+				})
+				response.end(JSON.stringify(body))
+			} else {
+				staticServer(url)
 				.then((data) => {
-					response.end(data);
+					response.writeHead(200, 'resolve OK', {'X-powered-by': 'node.js'})
+					response.end(data)
 				})
 				.catch((err) => {
 					response.end(err)
 				})
-
-			// if (url == '/css/index.css') {
-			//     fs.readFile('./public/css/index.css', (error, data) => {
-			//         response.end(data)
-			//     })
-			// }
-			// if (url == '/js/index.js') {
-			//     fs.readFile('./public/js/index.js', (error, data) => {
-			//         response.end(data)
-			//     })
-			// }
-			// if (url == '/') {
-			//     fs.readFile('./public/index.html', (error, data) => {
-			//         response.end(data)
-			//     })
-			// }
-
+			}
 		}
 
 	}

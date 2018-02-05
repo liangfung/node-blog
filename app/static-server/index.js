@@ -25,8 +25,6 @@ let staticFunc = (url) => {
       }
     })
   })
-
-  // return body;
 }
 
 module.exports = staticFunc
